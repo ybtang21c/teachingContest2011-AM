@@ -1,0 +1,340 @@
+% !Mode:: "TeX:UTF-8"
+
+%Composed by Y.B. TANG (ybtang21c@gmail.com), spring-2011
+%tex distribution: Texlive / MikTex 2010
+%recommended editer: Eclipse + Texlipse
+%usage: compile with XeLatex
+
+%option: red, brown, blue
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,bm}
+% \usepackage{txfonts} %another style of math fonts
+\usepackage{color,graphics}
+\usepackage{ulem} %erase line
+
+% ==============std fontspec settings==============
+\usepackage[no-math,cm-default]{fontspec}
+\newfontfamily\zhfont[BoldFont=Adobe Heiti Std]{Adobe Kaiti Std}
+
+% ==============spacing of CH in Xetex==============
+\usepackage{zhspacing}
+\zhspacing
+
+%==============layout setting==============
+\setlength{\parindent}{0pt}
+
+%=============test========================
+
+\usepackage[left={3cm},right={4cm},marginparwidth={3cm},marginparsep={1em},vmargin={2cm},]{geometry}%
+% \usepackage{amsmath,amsthm,amscd,amssymb,graphicx,comment,enumerate,picins,ifthen,multicol,fancyvrb,listings,color,verbatim}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy} \columnsep=10mm
+
+% \fancyhead[RE]{\leftmark} % 在偶数页的右侧显示章名
+\fancyhead[LO]{\rightmark} % 在奇数页的左侧显示小节名
+% \fancyhead[LE,RO]{~\thepage~} % 在偶数页的左侧，奇数页的右侧显示页码
+% \fancyfoot[RO,RE]{\it 国防科学技术大学-理学院}
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\headrulewidth}{0pt}
+% \usepackage[CJKbookmarks=true,bookmarksnumbered,bookmarksopen,colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green,dvipdfm]{hyperref}
+% \excludecomment{student}
+% \includecomment{teacher}
+
+%===============macros====================
+\newcommand{\bb}{\bf\color{blue}}
+\newcommand{\ba}[1]{\alert{\bf #1}}
+\newcommand*{\e}{\ensuremath{\varepsilon}}
+\renewcommand{\b}{\color{blue}}
+\newcommand*{\p}{\ensuremath{\partial}}
+\newcommand{\limn}{\ensuremath{\lim\limits_{n\to\infty}}}
+\newcommand{\sumn}{\ensuremath{\sum\limits_{n=1}^{\infty}}}
+\newcommand*{\df}[2]{\displaystyle\frac{\,{#1}\,}{\,{#2}\,}}
+\newcommand*{\limx}[1]{\ensuremath{\lim\limits_{x\to{#1}}}}
+\newcommand*{\limdx}{\ensuremath{\lim\limits_{\Delta x\to 0}}}
+\newcommand*{\dx}{\Delta x}
+\newcommand{\dint}{\ensuremath{\displaystyle\int}}
+\renewcommand{\d}{\mathrm{d}}
+
+
+%===============document begins here==============
+
+\begin{document}
+
+%0.3.7：系赛最终版
+%0.3.9：院赛
+
+%    \input{0.3.9.tex}
+
+% \chapter{微分学的应用}
+
+\begin{center}
+	{\Huge\bf \S\,5.5\;平面曲线的曲率}
+	
+	(授课教员：唐扬斌，理学院数学与系统科学系，2011年4月)
+\end{center}
+\vspace{2em}
+{\Large\bf 内容与要求：}
+\begin{itemize}
+  \item 理解平面曲线的曲率概念
+  \item 熟练掌握曲率的计算公式
+  \item 理解曲率圆与曲率半径
+  \item 了解曲率的应用
+\end{itemize}
+
+{\Large\bf 课后作业：}习题5.5：5,6,7,8,11
+
+\setcounter{section}{-1}
+\section{引入}
+
+{\bf (1)\,应用背景：在高速铁路的设计中，直线轨道如何与圆弧轨道实现平滑的连接？}
+
+{\bf 分析：}假设列车匀速运动，从直线轨道进入一段半径为$R$的圆弧轨道。
+\marginpar{\bf (作图分析)}
+% \begin{center}
+% 	\resizebox{!}{5.5cm}{\includegraphics{./images/rc01.pdf}}
+% \end{center}
+在直线轨道上，乘客 所受外力为$0$，而一旦进入圆弧轨道，将受到一个恒定的离心力$F=\df{mv^2}R$作用。如果直接
+将两段轨道连接起来，及时接合处的切线平滑，在切换轨道的一刻，乘客也将收到一个突然的外力冲击。
+
+{\bf 引申：}这个问题的解决，和我们本次课将要介绍的曲率有着密不可分的关系。
+\bigskip
+
+{\bf (2)\,知识回顾：一元函数的导数与微分与平面曲线的几何特征}
+\begin{itemize}
+  \item {一阶导数：}曲线的斜率——在某点处的切线的倾斜程度
+  \item {二阶导数：}曲线的凹凸性
+  \item {弧微分：}求给定曲线的长度
+  \item {\bf 曲率：}曲线的弯曲程度
+\end{itemize}
+
+{\bf (3)\,实验观察：如何刻画曲线的弯曲程度？}
+
+{\bf 实验一：}对书籍侧面曲线弯曲程度的比较。
+% \marginpar{{\bf 问：}弯曲后，哪条曲线的弯曲程度最大？}
+
+{\bf 分析：}每页纸的侧边长度相同，也即每条曲线长度相等。右端点“偏离”初始
+位置越多的曲线弯曲程度越大。所谓“偏离”，是指右端点处的切线相对于初始位置
+的转角。
+\marginpar{{\bf 问：}这种“偏离”在数学上如何刻画？是否就是该点与其初始位置的距离？为什么？}
+
+{\bf 结论一：}长度相同的曲线，切线转角越大越弯曲。
+
+\begin{center}
+	\resizebox{!}{5cm}{\includegraphics{./images/curves/c101.pdf}}\hspace{2cm}
+	\resizebox{!}{5cm}{\includegraphics{./images/curves/c201.pdf}}
+	
+	\vspace{-2em}
+	实验一\hspace{6cm}实验二
+\end{center}
+
+{\bf 实验二：}在保持外形不变的情况下，对某条曲线进行放缩，观察弧长与弯曲程度的关系。
+
+{\bf 分析：}取四分之一圆弧，进行保形的放缩。长的圆弧与短的圆弧，哪个更加弯曲？
+\marginpar{{\bf 提示：}设想部队行进，跑两步转过
+$90$度和跑二十步，或者一百步转过$90$度，哪个转弯更急？}
+
+{\bf 结论：}切线转角相同，弧长越短的曲线越弯曲。
+
+\section{曲率的概念}
+
+{\bf 观察结论：}曲线的弯曲程度与切线的转角成正比，弧长成反比。
+
+设曲线$C:y=f(x)$光滑且可求长度，从其上一点$M_0$出发，到另一点$M$的弧长
+为$\Delta s$，切线转角为$\Delta\alpha$。定义
+
+$$\bar{K}=\df{\Delta\alpha}{\Delta s}$$
+
+为曲线$M_0M$上的{\bf 平均曲率}。
+
+\begin{center}
+	\resizebox{!}{5cm}{\includegraphics{./images/curveAS.pdf}}
+\end{center}
+
+由于同一段曲线上可能存在完全程度不一致的情况，平均曲率很多时候并不能完全反映曲线
+在局部的弯曲情况。
+\marginpar{{\bf 提示：}如何将“平均”转化为“局部”？极限的概念}
+为此，我们定义{\bf 曲线$C$在$M_0$处的曲率}为：
+\marginpar{\bf (定义1)}
+
+$$\lim_{\Delta s\to 0}\df{\Delta\alpha}{\Delta s}.$$
+
+特别地，为了对曲线弯曲程度进行比较，我们约定曲率是一个正数，也即
+
+$$K=\lim_{\Delta s\to 0}\left|\df{\Delta\alpha}{\Delta s}\right|.$$
+
+这个定义告诉我们，曲率也就是{\bf 曲线切线的转角关于弧长的变化率}，因此我们也可以这样表示曲率
+
+$$K=\left|\df{\d\alpha}{\d s}\right|.$$
+
+下面来验证一下这个定义，我们考虑两类简单的平面曲线：
+
+{(1)\,直线：}直线的切线就是其自身，因此任意两点处切线的倾角相同，转角$\Delta\alpha$始终为$0$，
+故$K=0$。这个结论告诉我们：{\bf 直线不弯！}
+
+{(2)\,半径为$R$的圆：}如下图所示，
+\begin{center}
+	\resizebox{!}{4cm}{\includegraphics{./images/sphere.pdf}}
+\end{center}
+$$K=\left|\df{\Delta\alpha}{\Delta s}\right|=\df 1R.$$
+这说明，圆的曲率是常数，且唯一依赖于其半径。半径越小的圆，曲率越大。这复合我们此前
+通过实验观察得出的结论。
+\section{曲率的计算}
+
+下面来看如何计算曲率。假设已知曲线$C$的方程为$y=f(x)$，其中$f(x)$二阶可导，
+\marginpar{{\bf 问：}为什么要假设二阶可导？}
+则由：
+$$\d\alpha=\d\arctan\df yx=\df{y''}{1+(y')^2}\d x,$$
+$$\d s=\sqrt{1+(y')^2}\d x,$$
+从而
+$$K=\df{|y''|}{[1+(y')^2]^{3/2}}.$$
+这个定义中，我们注意到分子和分母中分别包含了曲线对应函数的一阶和二阶导数，这说明
+曲率和曲线的斜率以及凸凹性直接是存在一定关联的。
+
+下面我们来看一个例题：
+
+{\bf 例1.}\,求椭圆$x=3\cos \theta,y=2\sin \theta\,(0\leq \theta\leq 2\pi)$
+上任意点处的曲率，并指出其中曲率最大的点。
+
+{\bf 画图观察：}椭圆上曲率最大的点在什么位置？
+
+{\bf 解：}对任意$\theta\in[0,2\pi]$，
+$$y'_x=\df{y'_{\theta}}{x'_{\theta}}=-\df{2\cos\theta}{3\sin\theta}=-\df
+23\cot\theta,$$ 
+$$y''_{xx}=\df{(y'_x)'_{\theta}}{x'_{\theta}}
+=\df23\df{\csc^2\theta}{-3\sin\theta}=-\df 29\csc^3\theta.$$
+从而
+$$K=\df{|y''_{xx}|}{[1+(y'_x)^2]^{3/2}}=\df 6{(4+5\sin^2\theta)^{3/2}}.$$
+显然，当$\theta=0$或$\pi$时，$K$可取到最大值$K_{max}=\df 34$。也即，在椭圆的长轴端点处，
+曲率最大。
+
+{\bf 注：}在上面的计算中，我们并没有直接对$y=f(x)$形式的函数求导，而是从曲线的参数方程出发，
+利用前面学习过的参数方程求导方法，依次得到了$y'_x,y''_{xx}$和曲率$K$。这种方法，如果给出一个
+更为抽象的表示，可以写为：
+$$K=\df{|x'(t)y''(t)-x''(t)y'(t)|}
+		{\{[x'(t)]^2+[y'(t)]^2\}^{3/2}}.$$
+
+{\bf 课后思考题：}请参照以上的计算方法，推导用$x=x(y)$以及极坐标方程形式表示
+的曲线的曲率计算公式。
+
+{\bf 提示：}任何形式的曲线方程都可以被视为曲线参数方程的特殊形式。
+
+\section{曲率圆与曲率的应用}
+
+到目前为止，我们已经定义了曲率的概念，以及计算曲率的公式，下面我们来讨论一下曲率的应用问题。
+
+在此，首先引入所谓{\bf 曲率圆}的概念：\underline{与已知曲线在凹侧相切，且曲率相同的圆}。
+\marginpar{{\bf 问：}凹侧该如何理解？}
+例如下图：
+\begin{center}
+	\resizebox{!}{4cm}{\includegraphics{./images/curSphere.pdf}}
+\end{center}
+其中蓝色曲线表示的圆与给定曲线$C$在$M$点相切，且二者在$M$点的曲率相同。这样的圆和给定曲线
+具有怎样的关系呢？
+
+{\bf 定理1.}\,曲率圆与给定曲线二阶相切。
+
+{\bf 分析：}什么叫“二阶相切”？形象地说，二阶相切是一种比我们熟知的相切“贴合程度”更高的相切。
+在介绍切线的概念时，我们曾提到所谓“以直代曲”的概念，也就说在切点附近，由于两者“贴合紧密”，
+可以用切线近似地“替代”已知曲线。从上图我们不难看出，曲率圆与已知曲线的“贴合”相对于二者的切线
+要更加紧密。
+
+二阶相切在代数上的定义为：若曲线$C_1:y=f(x)$和$C_2:y=g(x)$在$x_0$处同时
+满足：
+\begin{eqnarray}
+	f(x_0)&=&g(x_0),\\
+	f'(x_0)&=&g'(x_0),\\
+	f''(x_0)&=&''g(x_0).
+\end{eqnarray}
+假设以上的$C_1$和$C_2$分别为已知曲线和曲率圆。由于二者相切，显然公式$(1)(2)$都是满足的。又
+二者的曲率
+$$K_1=\df{|f''(x_0)|}{\{1+[f'(x_0)]^2\}^{3/2}}=\df{|g''(x_0)|}{\{1+[g'(x_0)]^2\}^{3/2}}=K_2,$$
+故必有$|f''(x_0)|=|g''(x_0)|$。再由二者的“凹侧相切”可知，它们的凹向相同，也即二阶导数同号，
+因此$(3)$也满足。
+
+由以上的推导，我们可以很容易地得到一个结论，即曲率圆的半径，也称为已知曲线的{\bf 曲率半径}
+$$R=\df 1K.$$
+显然，圆的曲率半径就是其半径。
+
+{\bf 应用一：加工问题}
+请大家观察我们上面给出的图形，曲线$C$和它对应的曲率圆的位置关系是否很像砂轮和工件表面的曲线呢？
+一起来看下面的例子：
+{\bf 例2.}\,已知某工件内侧的截痕曲线为椭圆$\df{x^2}9+\df{y^2}4=1$，
+若用圆形砂轮对其进行打磨，问该如何选择砂轮的尺寸？
+\begin{center}
+	\resizebox{!}{4cm}{\includegraphics{./images/SE/S01.pdf}}
+\end{center}
+{\bf 分析：}
+\begin{itemize}
+  \item 如果选择的砂轮半径过大，工件内部将无法完全被打磨到；
+  \item 如果过小，打磨的效率可能相对较低；
+  \item {\bf 最优解：}选择曲率半径最小的曲率圆。
+\end{itemize}
+
+下面，让我们回到本节课开始时提到的应用问题：
+
+{\bf 应用二：铁路的缓和曲线}
+
+在铁路的设计中，一个重要的原则是：{\bf 为了确保列车行驶安全，应尽可能保证列车运行时
+所受离心力的平稳变化。}其中，对于给定曲线上，离心力的计算公式为
+$$F=\df{mv^2}{R},$$
+其中的$R$为曲线上该点处的曲率半径。
+
+为了解决我们前面提到的问题，在实际的铁路和轨道交通设计中，采用了所谓设置{\bf 缓和曲线}
+的方法。也即，在两段曲率不同的轨道间，铺设一段特定的轨道，实现曲率，最终也就是离心力，
+的平稳变化。原理如下图所示：
+\begin{center}
+	\resizebox{!}{5.5cm}{\includegraphics{./images/rc02.pdf}}
+\end{center}
+图中红色的部分就是我们所说的“缓和曲线”。在工程实践，缓和曲线的设计方式非常多种多样，
+其中，较为常见的缓和曲线类型为：
+\begin{itemize}
+  \item 三次多项式
+  \item 渐开螺旋线
+  \item 双扭线
+\end{itemize}
+等等。以下，我们就是三次多项式为例，来考虑如何求解处所需的缓和曲线方程：
+
+{\bf 例3.}\,如上图所示，列车匀速行进，经过一段直线轨道后，将进入半径为$R$的圆弧轨道。为
+尽量减少列车行驶中所受的离心力冲击，试确定一个三次多项式函数实现两段轨道的连接。
+
+{\bf 解：}如图建立平面直角坐标系。假设缓和曲线的方程为：
+$$y=ax^3+bx^2+cx+d,\quad(a>0,0\leq x\leq l).\eqno{(4)}$$
+根据设计原则，在$O$点处，
+\begin{eqnarray*}
+	y(0)&=&d=0,\\
+	y'(0)&=&c=0,\\
+	y''(0)&=&b=0.
+\end{eqnarray*}
+由此，方程$(4)$可简化为$y=ax^3$。
+
+再来考虑点$A$处。注意到为了保证轨道的平滑结合，对于圆弧轨道需要进行一定的“裁剪”和
+“平移”，从而保证圆弧曲线和接合曲线在接合点处相切。因此，为了求得参数$a$，我们只需
+考虑最后一个约束条件，即：两天曲线在接合点处的二阶导数相同，也即：
+$$y''(l)=\df{6al}{(1+9a^2l^4)^{3/2}}=\df 1R.$$
+在工程实际中，铁路上的圆弧轨道半径通常为km量级，而缓和曲线的长度会远远小于该值，因此
+对上式我们可以做一个近似的求解，得到：$a\approx \df 1{6Rl}$，从而所求缓和曲线为：
+$$y=\df{x^3}{6Rl},\quad(0\leq x\leq l).$$
+
+{\bf 计算检验：}为了更好地指导工程设计，在缓和曲线的设计上，已经形成了一整套相关
+的规范和标准，例如我国2003年颁布的《地铁设计规范》(GB50157-2003)。我们从其中
+取出一组数字，来验证一下我们以上设计的合理性：
+
+假设：列车匀速行驶，车速为$108km/h$，乘客体重$50kg$，圆弧半径$1km$，缓和曲线
+长度$90m$，以下是采用缓和曲线前后乘客所受离心力随距离的变化情况：
+\begin{center}
+	\resizebox{!}{5cm}{\includegraphics{./images/f01.pdf}}\quad
+	\resizebox{!}{5cm}{\includegraphics{./images/f02.pdf}}
+\end{center}
+其中，在不是用缓和曲线的情况下，$45N$(约$5kg$)的离心力将瞬间作用于乘客的身体。
+\marginpar{{\bf 提示：}相当于10本高数教材！}
+而使用了缓和曲线后，离心力将在3秒内渐次提高，大大降低了乘客所承受的冲量。
+
+{\bf 应用推广：}铁路中的缓和曲线设计，如果概括成一般的数学问题，应该被称为
+{\bf 曲线的接合问题}。类似这样的问题，在工程实践中广泛地存在，除了我们这里提到的
+铁路与轨道交通，在高速公路设计，甚至是过山车的设计中也存在类似的问题。
+
+{\bf 课后思考题：}(过山车设计)试设计一个分段的多项式函数，完成过山车上一段水平轨道与一段上坡直线轨道的接合。
+\end{document}
+

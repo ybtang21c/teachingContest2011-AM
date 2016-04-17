@@ -1,0 +1,171 @@
+% !Mode:: "TeX:UTF-8"
+
+%Composed by Y.B. TANG (ybtang21c@gmail.com), spring-2011
+%tex distribution: Texlive / MikTex 2010
+%recommended editer: Eclipse + Texlipse
+%usage: compile with XeLatex
+
+%option: red, brown, blue
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,bm}
+% \usepackage{txfonts} %another style of math fonts
+\usepackage{color,graphics}
+\usepackage{ulem} %erase line
+
+% ==============std fontspec settings==============
+\usepackage[no-math,cm-default]{fontspec}
+\newfontfamily\zhfont[BoldFont=Adobe Heiti Std]{Adobe Kaiti Std}
+
+% ==============spacing of CH in Xetex==============
+\usepackage{zhspacing}
+\usepackage{enumerate}
+\zhspacing
+
+%==============layout setting==============
+\setlength{\parindent}{0pt}
+
+%=============test========================
+
+\usepackage[left={3cm},right={4cm},marginparwidth={3cm},marginparsep={1em},vmargin={2cm},]{geometry}%
+% \usepackage{amsmath,amsthm,amscd,amssymb,graphicx,comment,enumerate,picins,ifthen,multicol,fancyvrb,listings,color,verbatim}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy} \columnsep=10mm
+
+% \fancyhead[RE]{\leftmark} % 在偶数页的右侧显示章名
+% \fancyhead[LO]{\rightmark} % 在奇数页的左侧显示小节名
+% \fancyhead[LE,RO]{~\thepage~} % 在偶数页的左侧，奇数页的右侧显示页码
+% \fancyfoot[RO,RE]{\it 国防科学技术大学-理学院}
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\headrulewidth}{0pt}
+% \usepackage[CJKbookmarks=true,bookmarksnumbered,bookmarksopen,colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green,dvipdfm]{hyperref}
+% \excludecomment{student}
+% \includecomment{teacher}
+
+%===============macros====================
+\newcommand{\bb}{\bf\color{blue}}
+\newcommand{\ba}[1]{\alert{\bf #1}}
+\newcommand*{\e}{\ensuremath{\varepsilon}}
+\renewcommand{\b}{\color{blue}}
+\newcommand*{\p}{\ensuremath{\partial}}
+\newcommand{\limn}{\ensuremath{\lim\limits_{n\to\infty}}}
+\newcommand{\sumn}{\ensuremath{\sum\limits_{n=1}^{\infty}}}
+\newcommand*{\df}[2]{\displaystyle\frac{\,{#1}\,}{\,{#2}\,}}
+\newcommand*{\limx}[1]{\ensuremath{\lim\limits_{x\to{#1}}}}
+\newcommand*{\limdx}{\ensuremath{\lim\limits_{\Delta x\to 0}}}
+\newcommand*{\dx}{\Delta x}
+\newcommand{\dint}{\ensuremath{\displaystyle\int}}
+\renewcommand{\d}{\mathrm{d}}
+
+
+%===============document begins here==============
+
+\begin{document}
+
+%0.3.7：系赛最终版
+%0.3.9：院赛
+
+%    \input{0.3.9.tex}
+
+% \chapter{微分学的应用}
+
+\begin{center}
+	{\Huge\bf \S\,5.5\;平面曲线的曲率}
+	
+	(授课教员：唐扬斌，理学院数学与系统科学系，2011年5月)
+\end{center}
+\vspace{2em}
+{\Large\bf 内容与要求：}
+\begin{itemize}
+  \item 理解平面曲线的曲率概念
+  \item 熟练掌握曲率的计算公式
+  \item 理解曲率圆与曲率半径
+  \item 了解曲率的应用
+\end{itemize}
+
+{\Large\bf 课后作业：}习题5.5：5,6,7,8,11
+
+\bigskip
+
+{\Large\bf 讲授要点：}
+
+{\bf 1、曲率的概念}
+
+\begin{enumerate}[(1)]
+  \item 通过高铁设计的例子和对相关知识的回顾，引出曲率的应用背景；
+  \item 通过实验观察，分析与曲率相关的因素；
+  \item 通过作图分析，给出平均曲率和曲率的定义；
+  \item 利用直线和圆的曲率验证定义的合理性。   
+\end{enumerate}
+
+{\bf 2、曲率的计算}
+
+\begin{enumerate}[(1)]
+  \item 推导$y=f(x)$形式曲线方程的曲率计算公式；
+  \item 以椭圆为例，计算曲率，并和实际观察对照，找出椭圆上曲率最大的点；
+  \item 给出曲率计算公式的参数方程形式。   
+\end{enumerate}
+
+{\bf 3、曲率圆与曲率的应用}
+
+\begin{enumerate}[(1)]
+  \item 给出曲率圆的定义；
+  \item 证明曲率圆与给定曲线的二阶相切关系；
+  \item 给出曲率半径的定义；
+  \item 通过打磨的例子说明曲率半径的简单应用；
+  \item 以三次多项式为例，求解铁路的缓和曲线；
+  \item 计算、验证和推广有关的结论。   
+\end{enumerate}
+
+\newpage
+
+\begin{center}
+	{\Huge\bf \S\,10.2\;二元函数的几何表示与极限}
+	
+	(授课教员：唐扬斌，理学院数学与系统科学系，2011年5月)
+\end{center}
+\vspace{2em}
+{\Large\bf 内容与要求：}
+\begin{itemize}
+  \item 理解二元函数的几何表示
+  \item 熟练掌握二元函数的极限概念
+  \item 理解二元函数连续的概念及其在有界闭区域上的基本性质
+\end{itemize}
+
+{\Large\bf 课后作业：}习题10.2：6,9(2,4),12
+
+\bigskip
+
+{\Large\bf 讲授要点：}
+
+{\bf 1、二元函数的几何表示}
+
+\begin{enumerate}[(1)]
+  \item 通过地图的问题引入二元函数的几何表示问题；
+  \item 与一元函数类比，分析二元函数与空间曲面的关系；
+  \item 给出地图的作图方法。   
+\end{enumerate}
+
+{\bf 2、二元函数的极限}
+
+\begin{enumerate}[(1)]
+  \item 回顾一元函数的极限概念；
+  \item 通过类比，给出二元函数极限的几何意义；
+  \item 类比一元函数极限的代数定义，给出二元函数极限的代数定义；
+  \item 从代数定义出发，分析二元函数极限与一元函数极限的差别；
+  \item 举例计算二元函数的极限；
+  \item 举例证明二元函数极限不存在的条件。 
+\end{enumerate}
+
+{\bf 3、二元函数的连续性及其在有界闭区域上的性质}
+
+\begin{enumerate}[(1)]
+  \item 给出二元函数连续的定义；
+  \item 给出二元函数在有界闭区域上连续的三个重要定理：最值存在定理、有界性定理和介值定理；
+  \item 举例讨论二元函数的连续性；
+  \item 课堂练习与讨论。
+\end{enumerate}
+
+\end{document}
+

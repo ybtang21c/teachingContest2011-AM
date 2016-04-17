@@ -1,0 +1,211 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      6434,        202]
+NotebookOptionsPosition[      5971,        184]
+NotebookOutlinePosition[      6408,        201]
+CellTagsIndexPosition[      6365,        198]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"1.", "\:692d\:5706\:7684\:66f2\:7387\:5706"}], 
+  "Subtitle"]], "Input",
+ CellChangeTimes->{{3.511527915103466*^9, 3.51152794187574*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"ContourPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"x", "-", 
+            RowBox[{
+             RowBox[{"5", "/", "3"}], 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"Cos", "[", "t", "]"}], ")"}], "^", "3"}]}]}], ")"}], 
+          "^", "2"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"y", "+", 
+            RowBox[{"2.5", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"Sin", "[", "t", "]"}], ")"}], "^", "3"}]}]}], ")"}], 
+          "^", "2"}]}], "==", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"4", "+", 
+            RowBox[{"5", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"Sin", "[", "t", "]"}], ")"}], "^", "2"}]}]}], ")"}], 
+          "^", "3"}], "/", "36"}]}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"4", 
+          RowBox[{"x", "^", "2"}]}], "+", 
+         RowBox[{"9", 
+          RowBox[{"y", "^", "2"}]}]}], "==", "36"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"x", "-", 
+            RowBox[{"3", 
+             RowBox[{"Cos", "[", "t", "]"}]}]}], ")"}], "^", "2"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"y", "-", 
+            RowBox[{"2", 
+             RowBox[{"Sin", "[", "t", "]"}]}]}], ")"}], "^", "2"}]}], "==", 
+        "0.005"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "5"}], ",", "5"}], "}"}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", "Automatic"}], ",", 
+     RowBox[{"ContourStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Directive", "[", 
+         RowBox[{"Red", ",", 
+          RowBox[{"Thickness", "[", "0.003", "]"}]}], "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{"Blue", ",", 
+          RowBox[{"Thickness", "[", "0.008", "]"}]}], "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{"Red", ",", 
+          RowBox[{"Thickness", "[", "0.01", "]"}]}], "]"}]}], "}"}]}]}], 
+    "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"2", "Pi"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.511509195550215*^9, 3.511509352829878*^9}, {
+  3.511509627919471*^9, 3.511509645358327*^9}, {3.511509680699729*^9, 
+  3.511509705216001*^9}, {3.511509758989757*^9, 3.511509869680941*^9}, {
+  3.511509983631446*^9, 3.511510016349988*^9}, {3.511510095657263*^9, 
+  3.5115102168806057`*^9}, {3.5115102483434553`*^9, 3.511510267325335*^9}, {
+  3.511510814788623*^9, 3.51151082018036*^9}}],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"2.", "\:534a\:5f84\:6700\:5c0f\:7684\:66f2\:7387\:5706"}], 
+  "Subtitle"]], "Input",
+ CellChangeTimes->{{3.5115279487849283`*^9, 3.511527955253435*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"ContourPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"x", "-", 
+            RowBox[{
+             RowBox[{"5", "/", "3"}], 
+             RowBox[{"Cos", "[", "t", "]"}]}]}], ")"}], "^", "2"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"y", "-", 
+            RowBox[{
+             RowBox[{"2", "/", "3"}], 
+             RowBox[{"Sin", "[", "t", "]"}]}]}], ")"}], "^", "2"}]}], 
+        "\[Equal]", 
+        RowBox[{"16", "/", "9"}]}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"4", 
+          RowBox[{"x", "^", "2"}]}], "+", 
+         RowBox[{"9", 
+          RowBox[{"y", "^", "2"}]}]}], "==", "36"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"x", "-", 
+            RowBox[{"3", 
+             RowBox[{"Cos", "[", "t", "]"}]}]}], ")"}], "^", "2"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"y", "-", 
+            RowBox[{"2", 
+             RowBox[{"Sin", "[", "t", "]"}]}]}], ")"}], "^", "2"}]}], "==", 
+        "0.005"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "3"}], ",", "3"}], "}"}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", "Automatic"}], ",", 
+     RowBox[{"ContourStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Directive", "[", 
+         RowBox[{"Red", ",", 
+          RowBox[{"Thickness", "[", "0.003", "]"}]}], "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{"Blue", ",", 
+          RowBox[{"Thickness", "[", "0.008", "]"}]}], "]"}], ",", 
+        RowBox[{"Directive", "[", 
+         RowBox[{"Red", ",", 
+          RowBox[{"Thickness", "[", "0.01", "]"}]}], "]"}]}], "}"}]}]}], 
+    "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", 
+     RowBox[{"2", "Pi"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.511510463082659*^9, 3.51151049561339*^9}, {
+  3.511510777456019*^9, 3.51151080579749*^9}}]
+},
+WindowSize->{856, 859},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+Magnification:>FEPrivate`If[
+  FEPrivate`Equal[FEPrivate`$VersionNumber, 6.], 1.5, 1.5 Inherited],
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 173, 4, 61, "Input"],
+Cell[721, 26, 2853, 82, 225, "Input"],
+Cell[3577, 110, 188, 4, 61, "Input"],
+Cell[3768, 116, 2199, 66, 179, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

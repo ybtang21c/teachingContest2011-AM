@@ -1,0 +1,123 @@
+% !Mode:: "TeX:UTF-8"
+
+%Composed by Y.B. TANG (ybtang21c@gmail.com), spring-2011
+%tex distribution: Texlive / MikTex 2010
+%recommended editer: Eclipse + Texlipse
+%usage: compile with XeLatex
+
+%option: red, brown, blue
+\documentclass[14pt,mathserif]{beamer}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,bm}
+% \usepackage{txfonts} %another style of math fonts
+\usepackage{beamerthemesplit,color,graphics}
+\usepackage{ulem} %erase line
+
+%==============std fontspec settings==============
+\usepackage[no-math,cm-default]{fontspec}
+\newfontfamily\zhfont[BoldFont=Adobe Heiti Std]{Adobe Kaiti Std}
+
+%==============spacing of CH in Xetex==============
+\usepackage{zhspacing} 
+\zhspacing
+
+%==============layout setting==============
+\setlength{\parindent}{0pt}  
+
+%==============beamer configuration==============
+\setbeamertemplate{theorems}[normal font]
+
+%============beamer theme setting #2============
+\mode<presentation>{
+	\usetheme{CambridgeUS} %Copenhagen, Warsaw, CambridgeUS
+  	\usecolortheme{crane} %rose, seahorse, lily, crane
+  	\usefonttheme{serif}
+  	\usefonttheme{structurebold}
+%   	\useoutertheme{infolines}
+  	\useoutertheme{split}
+%   \beamertemplateshadingbackground{brown!5}{yellow!10}
+% 	\setbeamercolor{frametitle}{bg=white}	
+%  	\setbeamercovered{transparent}
+}
+
+%============TOC setting============
+% \AtBeginSection{
+%    \begin{frame}{内容提要}
+%      \tableofcontents[currentsection,hideallsubsections]
+%    \end{frame}
+%  }
+% \AtBeginSubsection{
+%    \begin{frame}{内容提要}
+%      \tableofcontents[currentsection,currentsubsection]
+%    \end{frame}
+% }
+% \AtBeginSection{
+%   \frame{\tableofcontents[sections={\thesection}]}
+% }
+
+%===============macros====================
+\newcommand{\bb}{\bf\color{blue}}
+\newcommand{\ba}[1]{\alert{\bf #1}}
+\newcommand*{\e}{\ensuremath{\varepsilon}}
+\renewcommand{\b}{\color{blue}}
+\newcommand*{\p}{\ensuremath{\partial}}
+\newcommand{\limn}{\ensuremath{\lim\limits_{n\to\infty}}}
+\newcommand{\sumn}{\ensuremath{\sum\limits_{n=1}^{\infty}}}
+\newcommand*{\df}[2]{\displaystyle\frac{\,{#1}\,}{\,{#2}\,}}
+\newcommand*{\limx}[1]{\ensuremath{\lim\limits_{x\to{#1}}}}
+\newcommand*{\limdx}{\ensuremath{\lim\limits_{\Delta x\to 0}}}
+\newcommand*{\dx}{\Delta x}
+\newcommand{\dint}{\ensuremath{\displaystyle\int}}
+\renewcommand{\d}{\mathrm{d}}
+
+%================exampleblock counter===================
+% \newcounter{examplecounter}
+% \usecounter{examplecounter}
+% \setcounter{examplecounter}{1}
+% \newcommand{\exno}{{\bf
+% 例\arabic{examplecounter}}\refstepcounter{examplecounter}}
+
+%================block setting test=====================
+\definecolor{beamer@blendedred}{rgb}{0.7,0.2,0.2} % use structure theme to change
+\definecolor{beamer@blendedblue}{rgb}{0.2,0.2,0.7} % use structure theme to change
+\definecolor{beamer@blendedyellow}{rgb}{0.7,0.7,0.2}
+
+\setbeamercolor{structure}{fg=beamer@blendedred}
+
+\setbeamercolor{block title}
+{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
+% \setbeamercolor{block title alerted}
+% {use=alerted text,fg=alerted text.fg,bg=alerted text.fg!20!bg}
+\setbeamercolor{block title example}
+{use=example text,fg=example text.fg,bg=example text.fg!20!bg}
+
+\setbeamercolor{block body}
+{parent=normal text,use=block title,bg=block title.bg!50!bg}
+% \setbeamercolor{block body alerted}
+% {parent=normal text,use=block title alerted,bg=block title alerted.bg!50!bg}
+\setbeamercolor{block body example}
+{parent=normal text,use=block title example,bg=block title example.bg!50!bg}
+
+\setbeamercolor{titlelike}{parent=structure,bg=white!90!red}
+%=======================================================
+
+
+%===============title setting====================
+
+\title{《高等数学》}
+\institute[理学院]{}
+\author[国防科学技术大学]{唐扬斌\\
+\texttt{\small \\[-5pt] (tangyangbin@gfkd.mtn)\\ 理学院-数学与系统科学系}}
+\date[2011年5月]{2011年5月}
+
+%===============document begins here==============
+
+\begin{document}
+
+%0.3.7：系赛最终版
+%0.3.9：院赛
+
+   \input{0.5.1.tex}
+
+\end{document}
+
